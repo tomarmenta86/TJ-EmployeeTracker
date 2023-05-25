@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "inquirer": "^9.2.6",
+    "mysql": "^2.18.1"
+  },
+  "name": "tj-employeetracker",
+  "description": "- [Description](#description)\r - [Installation](#installation)\r - [Usage](#usage)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
