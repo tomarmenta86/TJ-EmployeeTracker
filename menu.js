@@ -6,7 +6,8 @@ import {
   addDepartment,
   addRole,
   addEmployee,
-  updateEmployeeRole
+  updateEmployeeRole,
+  getEmployees
 } from './database.js';
 
 const startMenu = async () => {
@@ -65,25 +66,29 @@ const promptAddEmployee = async () => {
 };
 
 const promptUpdateEmployeeRole = async () => {
-  const employees = await getEmployeeList();
+  try {
+    const employees = await getEmployeeList();
 
-  const { employeeId } = await inquirer.prompt({
-    name: 'employeeId',
-    type: 'list',
-    message: 'Select an employee to update:',
-    choices: employees.map((employee) => ({
-      name: `${employee.firstName} ${employee.lastName}`,
-      value: employee.id
-    }))
-  });
+    const { employeeId } = await inquirer.prompt({
+      name: 'employeeId',
+      type: 'list',
+      message: 'Select an employee to update:',
+      choices: employees.map((employee) => ({
+        name: `${employee.first_name} ${employee.last_name}`,
+        value: employee.employee_id
+      }))
+    });
 
-  const { roleId } = await inquirer.prompt({
-    name: 'roleId',
-    type: 'input',
-    message: 'Enter the new role ID for the employee:'
-  });
+    const { roleId } = await inquirer.prompt({
+      name: 'roleId',
+      type: 'input',
+      message: 'Enter the new role ID for the employee:'
+    });
 
-  await updateEmployeeRole(employeeId, roleId);
+    await updateEmployeeRole(employeeId, roleId);
+  } catch (error) {
+    console.error('Error updating employee role:', error);
+  }
 };
 
 const getEmployeeList = async () => {

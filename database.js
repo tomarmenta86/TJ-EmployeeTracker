@@ -70,13 +70,22 @@ const addEmployee = async (firstName, lastName, roleId, managerId) => {
 };
 
 const updateEmployeeRole = async (employeeId, roleId) => {
-  try {
-    await connection.promise().query('UPDATE employees SET role_id = ? WHERE id = ?', [roleId, employeeId]);
-    console.log('Employee role updated successfully!');
-  } catch (error) {
-    console.error('Error updating employee role:', error);
-  }
-};
+    try {
+      await connection.promise().query('UPDATE employees SET role_id = ? WHERE employee_id = ?', [roleId, employeeId]);
+      console.log('Employee role updated successfully!');
+    } catch (error) {
+      console.error('Error updating employee role:', error);
+    }
+  };
+
+const getEmployees = async () => {
+    try {
+      const [rows] = await connection.promise().query('SELECT * FROM employees');
+      return rows;
+    } catch (error) {
+      throw error;
+    }
+  };  
 
 export {
   viewDepartments,
@@ -85,5 +94,6 @@ export {
   addDepartment,
   addRole,
   addEmployee,
-  updateEmployeeRole
+  updateEmployeeRole,
+  getEmployees
 };
