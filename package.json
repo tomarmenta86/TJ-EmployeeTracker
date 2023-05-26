@@ -1,13 +1,17 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
     "inquirer": "^9.2.6",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mysql2": "^3.3.2",
+    "sequelize": "^6.31.1"
   },
   "name": "tj-employeetracker",
   "description": "- [Description](#description)\r - [Installation](#installation)\r - [Usage](#usage)",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

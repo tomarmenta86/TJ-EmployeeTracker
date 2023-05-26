@@ -1,1 +1,3 @@
-const inquirer = require('inquirer');
+import { startMenu } from './menu.js';
+
+startMenu();
